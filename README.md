@@ -40,6 +40,34 @@ wechat-article-creator/
 cp -r wechat-article-creator ~/.codebuddy/skills/
 ```
 
+## WorkBuddy 如何加载与使用
+
+本技能遵循 WorkBuddy（CodeBuddy）的技能协议，由 Agent 在对话中自动识别并加载，无需手动注册。
+
+### 自动识别
+WorkBuddy 会扫描技能目录下的 `SKILL.md`，依据其 frontmatter 中的 `name` 与 `description`（含触发词示例）判断何时启用本技能。
+
+### 安装位置
+将包含 `SKILL.md` 的整个目录放入用户技能目录即可：
+
+```bash
+cp -r wechat-article-creator ~/.codebuddy/skills/
+```
+
+放置后路径应为 `~/.codebuddy/skills/wechat-article-creator/SKILL.md`。
+
+### 触发方式
+- **被动触发**：当对话中出现「写一篇公众号文章」「排版成微信格式」「把文章发到公众号草稿箱」「为文章配图」等意图时，WorkBuddy 依据 `description` 自动加载本技能。
+- **主动触发**：直接在对话中指定，例如「用 wechat-article-creator 帮我写一篇关于 XX 的公众号推文」。
+
+### 全流程 vs 单环节
+技能覆盖 6 个环节（选题 / 写稿 / 配图 / 排版 / 去 AI 痕 / 发布），既可一次性串联执行，也可只跑其中某几个。每个环节之间会等待你确认后再继续，你也可以随时指定只执行特定环节。
+
+### 使用依赖回顾
+- 发布（环节 6）需要公众号 **AppID / AppSecret** 及服务器 IP 白名单；
+- 配图（环节 3）推荐用内置 **ImageGen**（前置需 `connect_cloud_service` 获取云端凭证），也可用 `OPENAI_API_KEY` / `GEMINI_API_KEY`；
+- 选题竞品参考依赖协作技能 `wechat-article-search`，去 AI 痕参考 `humanizer`。
+
 ## 前置依赖
 
 ### 发布功能（环节 6）

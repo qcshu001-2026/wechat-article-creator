@@ -33,30 +33,25 @@ wechat-article-creator/
 
 ## 安装
 
-将本仓库放到 CodeBuddy 的技能目录（即包含 `SKILL.md` 的那一层）即可被自动识别。以下三种方式任选其一：
+**方式一：对话安装（最简单）**
 
-### 方式一：Git 克隆（推荐，支持一键更新）
-```bash
-git clone https://github.com/qcshu001-2026/wechat-article-creator ~/.codebuddy/skills/wechat-article-creator
-```
-后续更新只需：
-```bash
-cd ~/.codebuddy/skills/wechat-article-creator && git pull
-```
+直接把本仓库的 GitHub 链接发给 WorkBuddy，并说一句「这是一个 skill，帮我安装下」，它会自动把技能克隆到技能目录并完成安装。例如：
 
-### 方式二：手动复制
+> 用户：https://github.com/qcshu001-2026/wechat-article-creator 这是一个 skill，帮我安装下
+
+安装完成后，重启/重载会话即可在对话中触发本技能。
+
+**方式二：手动复制（备用）**
+
+如偏好手动操作，将仓库复制到技能目录即可：
+
 ```bash
 cp -r wechat-article-creator ~/.codebuddy/skills/
 ```
 
-### 方式三：作为 CodeBuddy 插件安装（团队/市场分发，一键安装 + 更新）
-若已将本技能按 CodeBuddy 插件规范打包并发布到插件市场，用户可一键安装：
-```bash
-codebuddy plugin install wechat-article-creator@<your-marketplace>
-```
-更新：`codebuddy plugin update wechat-article-creator`（重启生效）。详见 `codebuddy plugin --help` 与官方插件文档。
+> 放置后路径应为 `~/.codebuddy/skills/wechat-article-creator/SKILL.md`。
 
-> 放置后路径应为 `~/.codebuddy/skills/wechat-article-creator/SKILL.md`（方式一/二）；方式三由插件机制自动管理。
+> 团队/市场批量分发：可把本技能按 CodeBuddy 插件规范打包后，用 `codebuddy plugin install wechat-article-creator@<your-marketplace>` 一键安装（详见 `codebuddy plugin --help`）。
 
 ## WorkBuddy 如何加载与使用
 
